@@ -4,11 +4,13 @@ public class Queue {
 
     }
 
-    public void remove() {
+    public int remove() {
 
+        return 0;
     }
 
-    public void examine() {
+    public int examine() {
 
+        return 0;
     }
 }

@@ -33,4 +33,16 @@ public class QueueTest {
         queue.examine();
     }
 
+    @Test
+    public void testRemoveMethodReturnsInt() {
+        Queue queue = new Queue();
+        int value = queue.remove();
+    }
+
+    @Test
+    public void testExamineMethodReturnsInt() {
+        Queue queue = new Queue();
+        int value = queue.examine();
+    }
+
 }
