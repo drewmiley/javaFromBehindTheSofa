@@ -23,7 +23,25 @@ public class ArraySort {
     }
 
     private int[] sortOne(int[] array, boolean ascending) {
-        return array;
+        int[] memArray = array;
+        for (int i = 0; i < array.length - 1; i++) {
+            if (ascending) {
+                if (memArray[i] > memArray[i + 1]) {
+                    int mem = memArray[i];
+                    memArray[i] = memArray[i + 1];
+                    memArray[i + 1] = mem;
+                    i = -1;
+                }
+            } else {
+                if (memArray[i] < memArray[i + 1]) {
+                    int mem = memArray[i];
+                    memArray[i] = memArray[i + 1];
+                    memArray[i + 1] = mem;
+                    i = -1;
+                }
+            }
+        }
+        return memArray;
     }
 
     public int[] ascVTwo() {
