@@ -1,6 +1,6 @@
 public class Queue {
 
-    public void insert() {
+    public void insert(int element) {
 
     }
 

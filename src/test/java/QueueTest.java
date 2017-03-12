@@ -16,9 +16,9 @@ public class QueueTest {
     }
 
     @Test
-    public void testHasInsertMethod() {
+    public void testHasInsertMethodWithIntArgument() {
         Queue queue = new Queue();
-        queue.insert();
+        queue.insert(1);
     }
 
     @Test
