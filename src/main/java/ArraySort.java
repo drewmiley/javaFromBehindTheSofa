@@ -53,6 +53,31 @@ public class ArraySort {
     }
 
     private int[] sortTwo(int[] array, boolean ascending) {
-        return array;
+        int[] sortedArray = new int[1];
+        sortedArray[0] = array[0];
+        for (int i = 1; i < array.length; i++) {
+            int j = 0;
+            if (ascending) {
+                while (j < sortedArray.length && array[i] > sortedArray[j]) {
+                    j++;
+                }
+            } else {
+                while (j < sortedArray.length && array[i] < sortedArray[j]) {
+                    j++;
+                }
+            }
+            int[] memArray = sortedArray;
+            sortedArray = new int[memArray.length + 1];
+            for (int k = 0; k < sortedArray.length; k++) {
+                if (k < j) {
+                    sortedArray[k] = memArray[k];
+                } else if (k > j) {
+                    sortedArray[k] = memArray[k - 1];
+                } else {
+                    sortedArray[k] = array[i];
+                }
+            }
+        }
+        return sortedArray;
     }
 }
