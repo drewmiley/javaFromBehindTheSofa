@@ -16,38 +16,43 @@ public class RedBlackTreeTest {
     }
 
     @Test
+    public void testHasConstructorWithIntArgument() {
+        RedBlackTree redBlackTree = new RedBlackTree(1);
+    }
+
+    @Test
     public void testHasInsertMethodWithIntArgument() {
-        RedBlackTree redBlackTree = new RedBlackTree();
+        RedBlackTree redBlackTree = new RedBlackTree(1);
         redBlackTree.insert(1);
     }
 
     @Test
     public void testHasSearchMethodWithIntArgument() {
-        RedBlackTree redBlackTree = new RedBlackTree();
+        RedBlackTree redBlackTree = new RedBlackTree(1);
         redBlackTree.search(1);
     }
 
     @Test
     public void testHasDeleteMethodWithIntArgument() {
-        RedBlackTree redBlackTree = new RedBlackTree();
+        RedBlackTree redBlackTree = new RedBlackTree(1);
         redBlackTree.delete(1);
     }
 
     @Test
     public void testHasInsertMethodReturnsBoolean() {
-        RedBlackTree redBlackTree = new RedBlackTree();
+        RedBlackTree redBlackTree = new RedBlackTree(1);
         boolean inserted = redBlackTree.insert(1);
     }
 
     @Test
     public void testHasSearchMethodReturnsNode() {
-        RedBlackTree redBlackTree = new RedBlackTree();
+        RedBlackTree redBlackTree = new RedBlackTree(1);
         Node node = redBlackTree.search(1);
     }
 
     @Test
     public void testHasDeleteMethodReturnsBoolean() {
-        RedBlackTree redBlackTree = new RedBlackTree();
+        RedBlackTree redBlackTree = new RedBlackTree(1);
         boolean deleted = redBlackTree.delete(1);
     }
 

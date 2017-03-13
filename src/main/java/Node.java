@@ -4,6 +4,10 @@ public class Node {
     private boolean black;
     private int[] children = new int[2];
 
+    public Node(int value) {
+        setValue(value);
+    }
+
     public int getValue() {
         return value;
     }

@@ -1,5 +1,11 @@
 public class RedBlackTree {
 
+    private Node[] nodes;
+
+    RedBlackTree(int root) {
+
+    }
+
     public boolean insert(int value) {
 
         return false;
