@@ -56,4 +56,14 @@ public class RedBlackTreeTest {
         boolean deleted = redBlackTree.delete(1);
     }
 
+    @Test
+    public void testSearchMethodFindsRootNode() throws Exception {
+        RedBlackTree redBlackTree = new RedBlackTree(1);
+        Node rootNode = redBlackTree.search(1);
+        assertEquals(1, rootNode.getValue(), 0);
+        assertEquals(true, rootNode.isBlack());
+        assertEquals(null, rootNode.getChildren()[0]);
+        assertEquals(null, rootNode.getChildren()[1]);
+    }
+
 }

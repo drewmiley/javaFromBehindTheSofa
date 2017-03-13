@@ -2,7 +2,7 @@ public class Node {
 
     private int value;
     private boolean black;
-    private int[] children = new int[2];
+    private Node[] children = new Node[2];
 
     public Node(int value) {
         setValue(value);
@@ -24,11 +24,11 @@ public class Node {
         this.black = black;
     }
 
-    public int[] getChildren() {
+    public Node[] getChildren() {
         return children;
     }
 
-    public void setChildren(int[] children) {
+    public void setChildren(Node[] children) {
         this.children = children;
     }
 }
