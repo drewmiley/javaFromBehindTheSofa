@@ -1,5 +1,6 @@
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
 import static org.junit.Assert.*;
 
@@ -12,6 +13,42 @@ public class RedBlackTreeTest {
     @After
     public void tearDown() throws Exception {
 
+    }
+
+    @Test
+    public void testHasInsertMethodWithIntArgument() {
+        RedBlackTree redBlackTree = new RedBlackTree();
+        redBlackTree.insert(1);
+    }
+
+    @Test
+    public void testHasSearchMethodWithIntArgument() {
+        RedBlackTree redBlackTree = new RedBlackTree();
+        redBlackTree.search(1);
+    }
+
+    @Test
+    public void testHasDeleteMethodWithIntArgument() {
+        RedBlackTree redBlackTree = new RedBlackTree();
+        redBlackTree.delete(1);
+    }
+
+    @Test
+    public void testHasInsertMethodReturnsBoolean() {
+        RedBlackTree redBlackTree = new RedBlackTree();
+        boolean inserted = redBlackTree.insert(1);
+    }
+
+    @Test
+    public void testHasSearchMethodReturnsNode() {
+        RedBlackTree redBlackTree = new RedBlackTree();
+        Node node = redBlackTree.search(1);
+    }
+
+    @Test
+    public void testHasDeleteMethodReturnsBoolean() {
+        RedBlackTree redBlackTree = new RedBlackTree();
+        boolean deleted = redBlackTree.delete(1);
     }
 
 }
