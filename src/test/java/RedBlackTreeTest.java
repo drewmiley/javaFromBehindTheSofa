@@ -66,4 +66,11 @@ public class RedBlackTreeTest {
         assertEquals(null, rootNode.getChildren()[1]);
     }
 
+    @Test
+    public void testSearchMethodReturnsNullIfIncorrectNodeValue() throws Exception {
+        RedBlackTree redBlackTree = new RedBlackTree(1);
+        Node node = redBlackTree.search(2);
+        assertEquals(null, node);
+    }
+
 }
