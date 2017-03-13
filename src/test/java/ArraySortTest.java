@@ -22,282 +22,282 @@ public class ArraySortTest {
     }
 
     @Test
-    public void testHasAscVOneMethod() {
+    public void testHasAscSwapSortMethod() {
         int[] array = new int[3];
         ArraySort arraySort = new ArraySort(array);
-        arraySort.ascVOne();
+        arraySort.ascSwapSort();
     }
 
     @Test
-    public void testHasDescVOneMethod() {
+    public void testHasDescSwapSortMethod() {
         int[] array = new int[3];
         ArraySort arraySort = new ArraySort(array);
-        arraySort.descVOne();
+        arraySort.descSwapSort();
     }
 
     @Test
-    public void testHasAscVTwoMethod() {
+    public void testHasAscSandwichSortMethod() {
         int[] array = new int[3];
         ArraySort arraySort = new ArraySort(array);
-        arraySort.ascVTwo();
+        arraySort.ascSandwichSort();
     }
 
     @Test
-    public void testHasDescVTwoMethod() {
+    public void testHasDescSandwichSortMethod() {
         int[] array = new int[3];
         ArraySort arraySort = new ArraySort(array);
-        arraySort.descVTwo();
+        arraySort.descSandwichSort();
     }
 
     @Test
-    public void testAscVOneMethodReturnsIntArray() {
+    public void testAscSwapSortMethodReturnsIntArray() {
         int[] array = new int[3];
         ArraySort arraySort = new ArraySort(array);
-        int[] ascArray = arraySort.ascVOne();
+        int[] ascArray = arraySort.ascSwapSort();
     }
 
     @Test
-    public void testDescVOneMethodReturnsIntArray() {
+    public void testDescSwapSortMethodReturnsIntArray() {
         int[] array = new int[3];
         ArraySort arraySort = new ArraySort(array);
-        int[] descArray = arraySort.descVOne();
+        int[] descArray = arraySort.descSwapSort();
     }
 
     @Test
-    public void testAscVTwoMethodReturnsIntArray() {
+    public void testAscSandwichSortMethodReturnsIntArray() {
         int[] array = new int[3];
         ArraySort arraySort = new ArraySort(array);
-        int[] ascArray = arraySort.ascVTwo();
+        int[] ascArray = arraySort.ascSandwichSort();
     }
 
     @Test
-    public void testDescVTwoMethodReturnsIntArray() {
+    public void testDescSandwichSortMethodReturnsIntArray() {
         int[] array = new int[3];
         ArraySort arraySort = new ArraySort(array);
-        int[] descArrary= arraySort.descVTwo();
+        int[] descArrary= arraySort.descSandwichSort();
     }
 
     @Test
-    public void testAscVOneSortsArrayAscendingAllPositiveInt() throws Exception {
+    public void testAscSwapSortSortsArrayAscendingAllPositiveInt() throws Exception {
         int[] array = {2, 5, 3, 1, 4};
         ArraySort arraySort = new ArraySort(array);
-        int[] ascArray = arraySort.ascVOne();
+        int[] ascArray = arraySort.ascSwapSort();
         assertArrayEquals(new int[]{1, 2, 3, 4, 5}, ascArray);
     }
 
     @Test
-    public void testAscVOneSortsArrayAscendingPositiveIntAndZero() throws Exception {
+    public void testAscSwapSortSortsArrayAscendingPositiveIntAndZero() throws Exception {
         int[] array = {0, 5, 3, 1, 4};
         ArraySort arraySort = new ArraySort(array);
-        int[] ascArray = arraySort.ascVOne();
+        int[] ascArray = arraySort.ascSwapSort();
         assertArrayEquals(new int[]{0, 1, 3, 4, 5}, ascArray);
     }
 
     @Test
-    public void testAscVOneSortsArrayAscendingPositiveIntZeroAndNegative() throws Exception {
+    public void testAscSwapSortSortsArrayAscendingPositiveIntZeroAndNegative() throws Exception {
         int[] array = {2, -5, 0, 1, 4};
         ArraySort arraySort = new ArraySort(array);
-        int[] ascArray = arraySort.ascVOne();
+        int[] ascArray = arraySort.ascSwapSort();
         assertArrayEquals(new int[]{-5, 0, 1, 2, 4}, ascArray);
     }
 
     @Test
-    public void testAscVOneSortsArrayAscendingRepeatedInts() throws Exception {
+    public void testAscSwapSortSortsArrayAscendingRepeatedInts() throws Exception {
         int[] array = {2, 1, 0, 1, 4};
         ArraySort arraySort = new ArraySort(array);
-        int[] ascArray = arraySort.ascVOne();
+        int[] ascArray = arraySort.ascSwapSort();
         assertArrayEquals(new int[]{0, 1, 1, 2, 4}, ascArray);
     }
 
     @Test
-    public void testAscVOneSortsArrayAscendingDuplicateRepeatedInts() throws Exception {
+    public void testAscSwapSortSortsArrayAscendingDuplicateRepeatedInts() throws Exception {
         int[] array = {2, 1, 0, 1, 2};
         ArraySort arraySort = new ArraySort(array);
-        int[] ascArray = arraySort.ascVOne();
+        int[] ascArray = arraySort.ascSwapSort();
         assertArrayEquals(new int[]{0, 1, 1, 2, 2}, ascArray);
     }
 
     @Test
-    public void testAscVOneSortsArrayAscendingDuplicateTripleInts() throws Exception {
+    public void testAscSwapSortSortsArrayAscendingDuplicateTripleInts() throws Exception {
         int[] array = {1, 1, 0, 1, 4};
         ArraySort arraySort = new ArraySort(array);
-        int[] ascArray = arraySort.ascVOne();
+        int[] ascArray = arraySort.ascSwapSort();
         assertArrayEquals(new int[]{0, 1, 1, 1, 4}, ascArray);
     }
 
     @Test
-    public void testAscVOneSortsArrayAscendingArrayLengthOne() throws Exception {
+    public void testAscSwapSortSortsArrayAscendingArrayLengthOne() throws Exception {
         int[] array = {1};
         ArraySort arraySort = new ArraySort(array);
-        int[] ascArray = arraySort.ascVOne();
+        int[] ascArray = arraySort.ascSwapSort();
         assertArrayEquals(new int[]{1}, ascArray);
     }
 
     @Test
-    public void testDescVOneSortsArrayDescendingAllPositiveInt() throws Exception {
+    public void testDescSwapSortSortsArrayDescendingAllPositiveInt() throws Exception {
         int[] array = {2, 5, 3, 1, 4};
         ArraySort arraySort = new ArraySort(array);
-        int[] descArray = arraySort.descVOne();
+        int[] descArray = arraySort.descSwapSort();
         assertArrayEquals(new int[]{5, 4, 3, 2, 1}, descArray);
     }
 
     @Test
-    public void testDescVOneSortsArrayDescendingPositiveIntAndZero() throws Exception {
+    public void testDescSwapSortSortsArrayDescendingPositiveIntAndZero() throws Exception {
         int[] array = {0, 5, 3, 1, 4};
         ArraySort arraySort = new ArraySort(array);
-        int[] descArray = arraySort.descVOne();
+        int[] descArray = arraySort.descSwapSort();
         assertArrayEquals(new int[]{5, 4, 3, 1, 0}, descArray);
     }
 
     @Test
-    public void testDescVOneSortsArrayDescendingPositiveIntZeroAndNegative() throws Exception {
+    public void testDescSwapSortSortsArrayDescendingPositiveIntZeroAndNegative() throws Exception {
         int[] array = {2, -5, 0, 1, 4};
         ArraySort arraySort = new ArraySort(array);
-        int[] descArray = arraySort.descVOne();
+        int[] descArray = arraySort.descSwapSort();
         assertArrayEquals(new int[]{4, 2, 1, 0, -5}, descArray);
     }
 
     @Test
-    public void testDescVOneSortsArrayDescendingRepeatedInts() throws Exception {
+    public void testDescSwapSortSortsArrayDescendingRepeatedInts() throws Exception {
         int[] array = {2, 1, 0, 1, 4};
         ArraySort arraySort = new ArraySort(array);
-        int[] descArray = arraySort.descVOne();
+        int[] descArray = arraySort.descSwapSort();
         assertArrayEquals(new int[]{4, 2, 1, 1, 0}, descArray);
     }
 
     @Test
-    public void testDescVOneSortsArrayDescendingDuplicateRepeatedInts() throws Exception {
+    public void testDescSwapSortSortsArrayDescendingDuplicateRepeatedInts() throws Exception {
         int[] array = {2, 1, 0, 1, 2};
         ArraySort arraySort = new ArraySort(array);
-        int[] descArray = arraySort.descVOne();
+        int[] descArray = arraySort.descSwapSort();
         assertArrayEquals(new int[]{2, 2, 1, 1, 0}, descArray);
     }
 
     @Test
-    public void testDescVOneSortsArrayDescendingDuplicateTripleInts() throws Exception {
+    public void testDescSwapSortSortsArrayDescendingDuplicateTripleInts() throws Exception {
         int[] array = {1, 1, 0, 1, 4};
         ArraySort arraySort = new ArraySort(array);
-        int[] descArray = arraySort.descVOne();
+        int[] descArray = arraySort.descSwapSort();
         assertArrayEquals(new int[]{4, 1, 1, 1, 0}, descArray);
     }
 
     @Test
-    public void testDescVOneSortsArrayDescendingArrayLengthOne() throws Exception {
+    public void testDescSwapSortSortsArrayDescendingArrayLengthOne() throws Exception {
         int[] array = {1};
         ArraySort arraySort = new ArraySort(array);
-        int[] descArray = arraySort.descVOne();
+        int[] descArray = arraySort.descSwapSort();
         assertArrayEquals(new int[]{1}, descArray);
     }
 
     @Test
-    public void testAscVTwoSortsArrayAscendingAllPositiveInt() throws Exception {
+    public void testAscSandwichSortSortsArrayAscendingAllPositiveInt() throws Exception {
         int[] array = {2, 5, 3, 1, 4};
         ArraySort arraySort = new ArraySort(array);
-        int[] ascArray = arraySort.ascVTwo();
+        int[] ascArray = arraySort.ascSandwichSort();
         assertArrayEquals(new int[]{1, 2, 3, 4, 5}, ascArray);
     }
 
     @Test
-    public void testAscVTwoSortsArrayAscendingPositiveIntAndZero() throws Exception {
+    public void testAscSandwichSortSortsArrayAscendingPositiveIntAndZero() throws Exception {
         int[] array = {0, 5, 3, 1, 4};
         ArraySort arraySort = new ArraySort(array);
-        int[] ascArray = arraySort.ascVTwo();
+        int[] ascArray = arraySort.ascSandwichSort();
         assertArrayEquals(new int[]{0, 1, 3, 4, 5}, ascArray);
     }
 
     @Test
-    public void testAscVTwoSortsArrayAscendingPositiveIntZeroAndNegative() throws Exception {
+    public void testAscSandwichSortSortsArrayAscendingPositiveIntZeroAndNegative() throws Exception {
         int[] array = {2, -5, 0, 1, 4};
         ArraySort arraySort = new ArraySort(array);
-        int[] ascArray = arraySort.ascVTwo();
+        int[] ascArray = arraySort.ascSandwichSort();
         assertArrayEquals(new int[]{-5, 0, 1, 2, 4}, ascArray);
     }
 
     @Test
-    public void testAscVTwoSortsArrayAscendingRepeatedInts() throws Exception {
+    public void testAscSandwichSortSortsArrayAscendingRepeatedInts() throws Exception {
         int[] array = {2, 1, 0, 1, 4};
         ArraySort arraySort = new ArraySort(array);
-        int[] ascArray = arraySort.ascVTwo();
+        int[] ascArray = arraySort.ascSandwichSort();
         assertArrayEquals(new int[]{0, 1, 1, 2, 4}, ascArray);
     }
 
     @Test
-    public void testAscVTwoSortsArrayAscendingDuplicateRepeatedInts() throws Exception {
+    public void testAscSandwichSortSortsArrayAscendingDuplicateRepeatedInts() throws Exception {
         int[] array = {2, 1, 0, 1, 2};
         ArraySort arraySort = new ArraySort(array);
-        int[] ascArray = arraySort.ascVTwo();
+        int[] ascArray = arraySort.ascSandwichSort();
         assertArrayEquals(new int[]{0, 1, 1, 2, 2}, ascArray);
     }
 
     @Test
-    public void testAscVTwoSortsArrayAscendingDuplicateTripleInts() throws Exception {
+    public void testAscSandwichSortSortsArrayAscendingDuplicateTripleInts() throws Exception {
         int[] array = {1, 1, 0, 1, 4};
         ArraySort arraySort = new ArraySort(array);
-        int[] ascArray = arraySort.ascVTwo();
+        int[] ascArray = arraySort.ascSandwichSort();
         assertArrayEquals(new int[]{0, 1, 1, 1, 4}, ascArray);
     }
 
     @Test
-    public void testAscVTwoSortsArrayAscendingArrayLengthOne() throws Exception {
+    public void testAscSandwichSortSortsArrayAscendingArrayLengthOne() throws Exception {
         int[] array = {1};
         ArraySort arraySort = new ArraySort(array);
-        int[] ascArray = arraySort.ascVTwo();
+        int[] ascArray = arraySort.ascSandwichSort();
         assertArrayEquals(new int[]{1}, ascArray);
     }
 
     @Test
-    public void testDescVTwoSortsArrayDescendingAllPositiveInt() throws Exception {
+    public void testDescSandwichSortSortsArrayDescendingAllPositiveInt() throws Exception {
         int[] array = {2, 5, 3, 1, 4};
         ArraySort arraySort = new ArraySort(array);
-        int[] descArray = arraySort.descVTwo();
+        int[] descArray = arraySort.descSandwichSort();
         assertArrayEquals(new int[]{5, 4, 3, 2, 1}, descArray);
     }
 
     @Test
-    public void testDescVTwoSortsArrayDescendingPositiveIntAndZero() throws Exception {
+    public void testDescSandwichSortSortsArrayDescendingPositiveIntAndZero() throws Exception {
         int[] array = {0, 5, 3, 1, 4};
         ArraySort arraySort = new ArraySort(array);
-        int[] descArray = arraySort.descVTwo();
+        int[] descArray = arraySort.descSandwichSort();
         assertArrayEquals(new int[]{5, 4, 3, 1, 0}, descArray);
     }
 
     @Test
-    public void testDescVTwoSortsArrayDescendingPositiveIntZeroAndNegative() throws Exception {
+    public void testDescSandwichSortSortsArrayDescendingPositiveIntZeroAndNegative() throws Exception {
         int[] array = {2, -5, 0, 1, 4};
         ArraySort arraySort = new ArraySort(array);
-        int[] descArray = arraySort.descVTwo();
+        int[] descArray = arraySort.descSandwichSort();
         assertArrayEquals(new int[]{4, 2, 1, 0, -5}, descArray);
     }
 
     @Test
-    public void testDescVTwoSortsArrayDescendingRepeatedInts() throws Exception {
+    public void testDescSandwichSortSortsArrayDescendingRepeatedInts() throws Exception {
         int[] array = {2, 1, 0, 1, 4};
         ArraySort arraySort = new ArraySort(array);
-        int[] descArray = arraySort.descVTwo();
+        int[] descArray = arraySort.descSandwichSort();
         assertArrayEquals(new int[]{4, 2, 1, 1, 0}, descArray);
     }
 
     @Test
-    public void testDescVTwoSortsArrayDescendingDuplicateRepeatedInts() throws Exception {
+    public void testDescSandwichSortSortsArrayDescendingDuplicateRepeatedInts() throws Exception {
         int[] array = {2, 1, 0, 1, 2};
         ArraySort arraySort = new ArraySort(array);
-        int[] descArray = arraySort.descVTwo();
+        int[] descArray = arraySort.descSandwichSort();
         assertArrayEquals(new int[]{2, 2, 1, 1, 0}, descArray);
     }
 
     @Test
-    public void testDescVTwoSortsArrayDescendingDuplicateTripleInts() throws Exception {
+    public void testDescSandwichSortSortsArrayDescendingDuplicateTripleInts() throws Exception {
         int[] array = {1, 1, 0, 1, 4};
         ArraySort arraySort = new ArraySort(array);
-        int[] descArray = arraySort.descVTwo();
+        int[] descArray = arraySort.descSandwichSort();
         assertArrayEquals(new int[]{4, 1, 1, 1, 0}, descArray);
     }
 
     @Test
-    public void testDescVTwoSortsArrayDescendingArrayLengthOne() throws Exception {
+    public void testDescSandwichSortSortsArrayDescendingArrayLengthOne() throws Exception {
         int[] array = {1};
         ArraySort arraySort = new ArraySort(array);
-        int[] descArray = arraySort.descVTwo();
+        int[] descArray = arraySort.descSandwichSort();
         assertArrayEquals(new int[]{1}, descArray);
     }
 

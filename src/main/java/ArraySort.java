@@ -14,15 +14,15 @@ public class ArraySort {
         this.array = array;
     }
 
-    public int[] ascVOne() {
-        return sortOne(array, true);
+    public int[] ascSwapSort() {
+        return swapSort(array, true);
     }
 
-    public int[] descVOne() {
-        return sortOne(array, false);
+    public int[] descSwapSort() {
+        return swapSort(array, false);
     }
 
-    private int[] sortOne(int[] array, boolean ascending) {
+    private int[] swapSort(int[] array, boolean ascending) {
         int[] memArray = array;
         for (int i = 0; i < array.length - 1; i++) {
             if (ascending) {
@@ -44,15 +44,15 @@ public class ArraySort {
         return memArray;
     }
 
-    public int[] ascVTwo() {
-        return sortTwo(array, true);
+    public int[] ascSandwichSort() {
+        return sandwichSort(array, true);
     }
 
-    public int[] descVTwo() {
-        return sortTwo(array, false);
+    public int[] descSandwichSort() {
+        return sandwichSort(array, false);
     }
 
-    private int[] sortTwo(int[] array, boolean ascending) {
+    private int[] sandwichSort(int[] array, boolean ascending) {
         int[] sortedArray = new int[1];
         sortedArray[0] = array[0];
         for (int i = 1; i < array.length; i++) {
