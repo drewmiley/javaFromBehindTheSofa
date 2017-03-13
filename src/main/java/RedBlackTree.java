@@ -8,9 +8,9 @@ public class RedBlackTree {
         nodes[0] = rootNode;
     }
 
-    public boolean insert(int value) {
+    public Node insert(int value) {
 
-        return false;
+        return null;
     }
 
     public Node search(int value) {

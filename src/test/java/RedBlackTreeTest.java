@@ -39,9 +39,9 @@ public class RedBlackTreeTest {
     }
 
     @Test
-    public void testHasInsertMethodReturnsBoolean() {
+    public void testHasInsertMethodReturnsNode() {
         RedBlackTree redBlackTree = new RedBlackTree(1);
-        boolean inserted = redBlackTree.insert(1);
+        Node node = redBlackTree.insert(1);
     }
 
     @Test
