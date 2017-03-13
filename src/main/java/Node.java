@@ -2,7 +2,8 @@ public class Node {
 
     private int value;
     private boolean black;
-    private Node[] children = new Node[2];
+    private Node elderChild;
+    private Node youngerChild;
 
     public Node(int value) {
         setValue(value);
@@ -24,11 +25,19 @@ public class Node {
         this.black = black;
     }
 
-    public Node[] getChildren() {
-        return children;
+    public Node getElderChild() {
+        return elderChild;
     }
 
-    public void setChildren(Node[] children) {
-        this.children = children;
+    public void setElderChild(Node elderChild) {
+        this.elderChild = elderChild;
+    }
+
+    public Node getYoungerChild() {
+        return youngerChild;
+    }
+
+    public void setYoungerChild(Node youngerChild) {
+        this.youngerChild = youngerChild;
     }
 }
