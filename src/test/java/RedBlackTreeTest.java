@@ -1,5 +1,6 @@
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -74,6 +75,25 @@ public class RedBlackTreeTest {
     }
 
     @Test
+    public void testBSTInsertMethodAddsNodeToRootNodeGreaterThan() throws Exception {
+        int rootValue = 10;
+        RedBlackTree redBlackTree = new RedBlackTree(rootValue);
+
+        Node insertedNode = redBlackTree.bstInsert(20);
+        assertEquals(20, insertedNode.getValue(), 0);
+        assertEquals(false, insertedNode.isBlack());
+        assertEquals(null, insertedNode.getYoungerChild());
+        assertEquals(null, insertedNode.getElderChild());
+
+        Node rootNode = redBlackTree.search(rootValue);
+        assertEquals(10, rootNode.getValue(), 0);
+        assertEquals(true, rootNode.isBlack());
+        assertEquals(null, rootNode.getYoungerChild());
+        assertEquals(20, rootNode.getElderChild().getValue());
+    }
+
+    @Ignore
+    @Test
     public void testInsertMethodAddsNodeToRootNodeGreaterThan() throws Exception {
         int rootValue = 10;
         RedBlackTree redBlackTree = new RedBlackTree(rootValue);
@@ -91,6 +111,25 @@ public class RedBlackTreeTest {
     }
 
     @Test
+    public void testBSTInsertMethodAddsNodeToRootNodeLessThan() throws Exception {
+        int rootValue = 10;
+        RedBlackTree redBlackTree = new RedBlackTree(rootValue);
+
+        Node insertedNode = redBlackTree.bstInsert(5);
+        assertEquals(5, insertedNode.getValue(), 0);
+        assertEquals(false, insertedNode.isBlack());
+        assertEquals(null, insertedNode.getYoungerChild());
+        assertEquals(null, insertedNode.getElderChild());
+
+        Node rootNode = redBlackTree.search(rootValue);
+        assertEquals(10, rootNode.getValue(), 0);
+        assertEquals(true, rootNode.isBlack());
+        assertEquals(5, rootNode.getYoungerChild().getValue());
+        assertEquals(null, rootNode.getElderChild());
+    }
+
+    @Ignore
+    @Test
     public void testInsertMethodAddsNodeToRootNodeLessThan() throws Exception {
         int rootValue = 10;
         RedBlackTree redBlackTree = new RedBlackTree(rootValue);
@@ -107,6 +146,31 @@ public class RedBlackTreeTest {
         assertEquals(null, rootNode.getElderChild());
     }
 
+    @Test
+    public void testBSTInsertMethodAddsNodesToRootNodeOneGreaterThanOneLessThanLessFirst() throws Exception {
+        int rootValue = 10;
+        RedBlackTree redBlackTree = new RedBlackTree(rootValue);
+
+        Node youngerNode = redBlackTree.bstInsert(5);
+        assertEquals(5, youngerNode.getValue(), 0);
+        assertEquals(false, youngerNode.isBlack());
+        assertEquals(null, youngerNode.getYoungerChild());
+        assertEquals(null, youngerNode.getElderChild());
+
+        Node elderNode = redBlackTree.bstInsert(20);
+        assertEquals(20, elderNode.getValue(), 0);
+        assertEquals(false, elderNode.isBlack());
+        assertEquals(null, elderNode.getYoungerChild());
+        assertEquals(null, elderNode.getElderChild());
+
+        Node rootNode = redBlackTree.search(rootValue);
+        assertEquals(10, rootNode.getValue(), 0);
+        assertEquals(true, rootNode.isBlack());
+        assertEquals(5, rootNode.getYoungerChild().getValue(), 0);
+        assertEquals(20, rootNode.getElderChild().getValue());
+    }
+
+    @Ignore
     @Test
     public void testInsertMethodAddsNodesToRootNodeOneGreaterThanOneLessThanLessFirst() throws Exception {
         int rootValue = 10;
@@ -130,6 +194,31 @@ public class RedBlackTreeTest {
     }
 
     @Test
+    public void testBSTInsertMethodAddsNodesToRootNodeOneGreaterThanOneLessThanGreaterFirst() throws Exception {
+        int rootValue = 10;
+        RedBlackTree redBlackTree = new RedBlackTree(rootValue);
+
+        Node elderNode = redBlackTree.bstInsert(20);
+        assertEquals(20, elderNode.getValue(), 0);
+        assertEquals(false, elderNode.isBlack());
+        assertEquals(null, elderNode.getYoungerChild());
+        assertEquals(null, elderNode.getElderChild());
+
+        Node youngerNode = redBlackTree.bstInsert(5);
+        assertEquals(5, youngerNode.getValue(), 0);
+        assertEquals(false, youngerNode.isBlack());
+        assertEquals(null, youngerNode.getYoungerChild());
+        assertEquals(null, youngerNode.getElderChild());
+
+        Node rootNode = redBlackTree.search(rootValue);
+        assertEquals(10, rootNode.getValue(), 0);
+        assertEquals(true, rootNode.isBlack());
+        assertEquals(5, rootNode.getYoungerChild().getValue(), 0);
+        assertEquals(20, rootNode.getElderChild().getValue());
+    }
+
+    @Ignore
+    @Test
     public void testInsertMethodAddsNodesToRootNodeOneGreaterThanOneLessThanGreaterFirst() throws Exception {
         int rootValue = 10;
         RedBlackTree redBlackTree = new RedBlackTree(rootValue);
@@ -151,6 +240,37 @@ public class RedBlackTreeTest {
         assertEquals(20, rootNode.getElderChild().getValue());
     }
 
+    @Test
+    public void testBSTInsertMethodAddsNodesToRootNodeTwoGreaterThanLeastFirst() throws Exception {
+        int youngestValue = 5;
+        RedBlackTree redBlackTree = new RedBlackTree(youngestValue);
+
+        Node middleNode = redBlackTree.bstInsert(10);
+        assertEquals(10, middleNode.getValue(), 0);
+        assertEquals(false, middleNode.isBlack());
+        assertEquals(null, middleNode.getYoungerChild());
+        assertEquals(null, middleNode.getElderChild());
+
+        Node eldestNode = redBlackTree.bstInsert(20);
+        assertEquals(20, eldestNode.getValue(), 0);
+        assertEquals(false, eldestNode.isBlack());
+        assertEquals(null, eldestNode.getYoungerChild());
+        assertEquals(null, eldestNode.getElderChild());
+
+        Node youngestNode = redBlackTree.search(youngestValue);
+        assertEquals(5, youngestNode.getValue(), 0);
+        assertEquals(true, youngestNode.isBlack());
+        assertEquals(null, youngestNode.getYoungerChild());
+        assertEquals(10, youngestNode.getElderChild().getValue(), 0);
+
+        middleNode = redBlackTree.search(10);
+        assertEquals(10, middleNode.getValue(), 0);
+        assertEquals(false, middleNode.isBlack());
+        assertEquals(null, middleNode.getYoungerChild());
+        assertEquals(20, middleNode.getElderChild().getValue(), 0);
+    }
+
+    @Ignore
     @Test
     public void testInsertMethodAddsNodesToRootNodeTwoGreaterThanLeastFirst() throws Exception {
         int youngestValue = 5;
@@ -179,6 +299,37 @@ public class RedBlackTreeTest {
     }
 
     @Test
+    public void testBSTInsertMethodAddsNodesToRootNodeTwoGreaterThanGreatestFirst() throws Exception {
+        int youngestValue = 5;
+        RedBlackTree redBlackTree = new RedBlackTree(youngestValue);
+
+        Node eldestNode = redBlackTree.bstInsert(20);
+        assertEquals(20, eldestNode.getValue(), 0);
+        assertEquals(false, eldestNode.isBlack());
+        assertEquals(null, eldestNode.getYoungerChild());
+        assertEquals(null, eldestNode.getElderChild());
+
+        Node middleNode = redBlackTree.bstInsert(10);
+        assertEquals(10, middleNode.getValue(), 0);
+        assertEquals(false, middleNode.isBlack());
+        assertEquals(null, middleNode.getYoungerChild());
+        assertEquals(null, middleNode.getElderChild());
+
+        Node youngestNode = redBlackTree.search(youngestValue);
+        assertEquals(5, youngestNode.getValue(), 0);
+        assertEquals(true, youngestNode.isBlack());
+        assertEquals(null, youngestNode.getYoungerChild());
+        assertEquals(20, youngestNode.getElderChild().getValue(), 0);
+
+        eldestNode = redBlackTree.search(20);
+        assertEquals(20, eldestNode.getValue(), 0);
+        assertEquals(false, eldestNode.isBlack());
+        assertEquals(10, eldestNode.getYoungerChild().getValue(), 0);
+        assertEquals(null, eldestNode.getElderChild());
+    }
+
+    @Ignore
+    @Test
     public void testInsertMethodAddsNodesToRootNodeTwoGreaterThanGreatestFirst() throws Exception {
         int youngestValue = 5;
         RedBlackTree redBlackTree = new RedBlackTree(youngestValue);
@@ -205,6 +356,37 @@ public class RedBlackTreeTest {
         assertEquals(null, eldestNode.getElderChild());
     }
 
+    @Test
+    public void testBSTInsertMethodAddsNodesToRootNodeTwoLessThanLeastFirst() throws Exception {
+        int eldestValue = 20;
+        RedBlackTree redBlackTree = new RedBlackTree(eldestValue);
+
+        Node youngestNode = redBlackTree.bstInsert(5);
+        assertEquals(5, youngestNode.getValue(), 0);
+        assertEquals(false, youngestNode.isBlack());
+        assertEquals(null, youngestNode.getYoungerChild());
+        assertEquals(null, youngestNode.getElderChild());
+
+        Node middleNode = redBlackTree.bstInsert(10);
+        assertEquals(10, middleNode.getValue(), 0);
+        assertEquals(false, middleNode.isBlack());
+        assertEquals(null, middleNode.getYoungerChild());
+        assertEquals(null, middleNode.getElderChild());
+
+        Node eldestNode = redBlackTree.search(eldestValue);
+        assertEquals(20, eldestNode.getValue(), 0);
+        assertEquals(true, eldestNode.isBlack());
+        assertEquals(5, eldestNode.getYoungerChild().getValue(), 0);
+        assertEquals(null, eldestNode.getElderChild());
+
+        youngestNode = redBlackTree.search(5);
+        assertEquals(5, youngestNode.getValue(), 0);
+        assertEquals(false, youngestNode.isBlack());
+        assertEquals(null, youngestNode.getYoungerChild());
+        assertEquals(10, youngestNode.getElderChild().getValue(), 0);
+    }
+
+    @Ignore
     @Test
     public void testInsertMethodAddsNodesToRootNodeTwoLessThanLeastFirst() throws Exception {
         int eldestValue = 20;
@@ -233,6 +415,37 @@ public class RedBlackTreeTest {
     }
 
     @Test
+    public void testBSTInsertMethodAddsNodesToRootNodeTwoLessThanGreatestFirst() throws Exception {
+        int eldestValue = 20;
+        RedBlackTree redBlackTree = new RedBlackTree(eldestValue);
+
+        Node middleNode = redBlackTree.bstInsert(10);
+        assertEquals(10, middleNode.getValue(), 0);
+        assertEquals(false, middleNode.isBlack());
+        assertEquals(null, middleNode.getYoungerChild());
+        assertEquals(null, middleNode.getElderChild());
+
+        Node youngestNode = redBlackTree.bstInsert(5);
+        assertEquals(5, youngestNode.getValue(), 0);
+        assertEquals(false, youngestNode.isBlack());
+        assertEquals(null, youngestNode.getYoungerChild());
+        assertEquals(null, youngestNode.getElderChild());
+
+        Node eldestNode = redBlackTree.search(eldestValue);
+        assertEquals(20, eldestNode.getValue(), 0);
+        assertEquals(true, eldestNode.isBlack());
+        assertEquals(10, eldestNode.getYoungerChild().getValue(), 0);
+        assertEquals(null, eldestNode.getElderChild());
+
+        middleNode = redBlackTree.search(10);
+        assertEquals(10, middleNode.getValue(), 0);
+        assertEquals(false, middleNode.isBlack());
+        assertEquals(5, middleNode.getYoungerChild().getValue(), 0);
+        assertEquals(null, middleNode.getElderChild());
+    }
+
+    @Ignore
+    @Test
     public void testInsertMethodAddsNodesToRootNodeTwoLessThanGreatestFirst() throws Exception {
         int eldestValue = 20;
         RedBlackTree redBlackTree = new RedBlackTree(eldestValue);
@@ -259,6 +472,14 @@ public class RedBlackTreeTest {
         assertEquals(20, middleNode.getElderChild().getValue(), 0);
     }
 
+    @Test
+    public void testBSTInsertMethodReturnsNullIfAddingRepeatedNodeValue() throws Exception {
+        RedBlackTree redBlackTree = new RedBlackTree(1);
+        Node insertedNode = redBlackTree.bstInsert(1);
+        assertEquals(null, insertedNode);
+    }
+
+    @Ignore
     @Test
     public void testInsertMethodReturnsNullIfAddingRepeatedNodeValue() throws Exception {
         RedBlackTree redBlackTree = new RedBlackTree(1);
