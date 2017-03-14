@@ -54,9 +54,17 @@ public class QueueTest {
 
         queue.insert(2);
         value = queue.examine();
+        assertEquals(1, value, 0);
+
+        queue.remove();
+        value = queue.examine();
         assertEquals(2, value, 0);
 
         queue.insert(3);
+        value = queue.examine();
+        assertEquals(2, value, 0);
+
+        queue.remove();
         value = queue.examine();
         assertEquals(3, value, 0);
     }
@@ -67,18 +75,19 @@ public class QueueTest {
         queue.insert(1);
         queue.insert(2);
         int value = queue.examine();
-        assertEquals(2, value, 0);
+        assertEquals(1, value, 0);
         queue.remove();
         value = queue.examine();
-        assertEquals(1, value, 0);
+        assertEquals(2, value, 0);
 
+        queue.remove();
         queue.insert(3);
         queue.insert(4);
         value = queue.examine();
-        assertEquals(4, value, 0);
+        assertEquals(3, value, 0);
         queue.remove();
         value = queue.examine();
-        assertEquals(3, value, 0);
+        assertEquals(4, value, 0);
     }
 
     @Test
@@ -87,12 +96,13 @@ public class QueueTest {
         queue.insert(1);
         queue.insert(2);
         int value = queue.remove();
-        assertEquals(2, value, 0);
+        assertEquals(1, value, 0);
 
+        queue.remove();
         queue.insert(3);
         queue.insert(4);
         value = queue.remove();
-        assertEquals(4, value, 0);
+        assertEquals(3, value, 0);
     }
 
     @Test
@@ -101,12 +111,11 @@ public class QueueTest {
         queue.insert(1);
         queue.insert(2);
         int value = queue.examine();
-        assertEquals(2, value, 0);
+        assertEquals(1, value, 0);
 
-        queue.insert(3);
-        queue.insert(4);
+        queue.remove();
         value = queue.examine();
-        assertEquals(4, value, 0);
+        assertEquals(2, value, 0);
     }
 
     @Test
@@ -115,16 +124,15 @@ public class QueueTest {
         queue.insert(1);
         queue.insert(2);
         int value = queue.examine();
-        assertEquals(2, value, 0);
+        assertEquals(1, value, 0);
         value = queue.examine();
-        assertEquals(2, value, 0);
+        assertEquals(1, value, 0);
 
-        queue.insert(3);
-        queue.insert(4);
+        queue.remove();
         value = queue.examine();
-        assertEquals(4, value, 0);
+        assertEquals(2, value, 0);
         value = queue.examine();
-        assertEquals(4, value, 0);
+        assertEquals(2, value, 0);
     }
 
 }
