@@ -10,8 +10,88 @@ public class RedBlackTree {
     public Node insert(int value) {
         Node node = bstInsert(value);
 
-//        Node parentNode = findParentNode(node);
-//        Node uncleNode = findSiblingNode(parentNode);
+        Node parentNode = findParentNode(node);
+        Node uncleNode = findSiblingNode(parentNode);
+
+        Node grandparentNode = findParentNode(parentNode);
+
+        if (grandparentNode != null) {
+            if (uncleNode == null || uncleNode.isBlack()) {
+                if (grandparentNode.getYoungerChild() == parentNode &&
+                        parentNode.getYoungerChild() == node) {
+                    // Left Left Case
+                    grandparentNode.setBlack(!grandparentNode.isBlack());
+                    grandparentNode.setYoungerChild(parentNode.getElderChild());
+                    parentNode.setBlack(!parentNode.isBlack());
+                    parentNode.setElderChild(grandparentNode);
+                    if (grandparentNode.getValue() == rootNode.getValue()) {
+                        rootNode = parentNode;
+                    }
+
+                } else if (grandparentNode.getYoungerChild() == parentNode &&
+                        parentNode.getElderChild() == node) {
+                    // Left Right Case
+                    grandparentNode.setBlack(!grandparentNode.isBlack());
+                    grandparentNode.setYoungerChild(null);
+                    parentNode.setElderChild(null);
+                    node.setBlack(!node.isBlack());
+                    node.setYoungerChild(parentNode);
+                    node.setElderChild(grandparentNode);
+                    if (grandparentNode.getValue() == rootNode.getValue()) {
+                        rootNode = node;
+                    }
+                } else if (grandparentNode.getElderChild() == parentNode &&
+                        parentNode.getYoungerChild() == node) {
+                    // Right Left Case
+                    grandparentNode.setBlack(!grandparentNode.isBlack());
+                    grandparentNode.setElderChild(null);
+                    parentNode.setYoungerChild(null);
+                    node.setBlack(!node.isBlack());
+                    node.setYoungerChild(grandparentNode);
+                    node.setElderChild(parentNode);
+                    if (grandparentNode.getValue() == rootNode.getValue()) {
+                        rootNode = node;
+                    }
+                } else if (grandparentNode.getElderChild() == parentNode &&
+                        parentNode.getElderChild() == node) {
+                    // Right Right Case
+                    grandparentNode.setBlack(!grandparentNode.isBlack());
+                    grandparentNode.setElderChild(parentNode.getYoungerChild());
+                    parentNode.setBlack(!parentNode.isBlack());
+                    parentNode.setYoungerChild(grandparentNode);
+                    if (grandparentNode.getValue() == rootNode.getValue()) {
+                        rootNode = parentNode;
+                    }
+                } else {
+                    node = null;
+                }
+
+            } else {
+//            parentNode.setBlack(true);
+//            uncleNode.setBlack(true);
+//            Node grandparentNode = findParentNode(parentNode);
+//            if (grandparentNode == null) {
+//
+//            } else {
+//                grandparentNode.setBlack(false);
+//                parentNode = findParentNode(grandparentNode);
+//                if (parentNode == null) {
+//                    return;
+//                } else {
+//                    parentNode.setBlack(true);
+//                    uncleNode = findSiblingNode(parentNode);
+//                    if (uncleNode == null) {
+//
+//                    } else {
+//                        uncleNode.setBlack(true);
+//                    }
+//                    grandparentNode = findParentNode(parentNode);
+//                    //etc.
+//                }
+//
+//            }
+            }
+        }
         return node;
     }
 
