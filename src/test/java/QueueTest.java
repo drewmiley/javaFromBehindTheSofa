@@ -60,11 +60,8 @@ public class QueueTest {
         value = queue.examine();
         assertEquals(2, value, 0);
 
-        queue.insert(3);
-        value = queue.examine();
-        assertEquals(2, value, 0);
-
         queue.remove();
+        queue.insert(3);
         value = queue.examine();
         assertEquals(3, value, 0);
     }
