@@ -9,6 +9,9 @@ public class RedBlackTree {
 
     public Node insert(int value) {
         Node node = bstInsert(value);
+
+//        Node parentNode = findParentNode(node);
+//        Node uncleNode = findSiblingNode(parentNode);
         return node;
     }
 
@@ -40,6 +43,54 @@ public class RedBlackTree {
         }
 
         return node;
+    }
+
+    public Node findSiblingNode(Node node) {
+        if (node == null) {
+            return null;
+        }
+        boolean searchComplete = false;
+        Node comparedNode = rootNode;
+        Node siblingNode = null;
+        while (!searchComplete) {
+            if (comparedNode.getValue() < node.getValue()) {
+                siblingNode = comparedNode.getYoungerChild();
+                comparedNode = comparedNode.getElderChild();
+            } else if (comparedNode.getValue() > node.getValue()) {
+                siblingNode = comparedNode.getElderChild();
+                comparedNode = comparedNode.getYoungerChild();
+            } else {
+                searchComplete = true;
+            }
+            if (comparedNode == null) {
+                searchComplete = true;
+            }
+        }
+        return siblingNode;
+    }
+
+    public Node findParentNode(Node node) {
+        if (node == null) {
+            return null;
+        }
+        boolean searchComplete = false;
+        Node comparedNode = rootNode;
+        Node parentNode = null;
+        while (!searchComplete) {
+            if (comparedNode.getValue() < node.getValue()) {
+                parentNode = comparedNode;
+                comparedNode = comparedNode.getElderChild();
+            } else if (comparedNode.getValue() > node.getValue()) {
+                parentNode = comparedNode;
+                comparedNode = comparedNode.getYoungerChild();
+            } else {
+                searchComplete = true;
+            }
+            if (comparedNode == null) {
+                searchComplete = true;
+            }
+        }
+        return parentNode;
     }
 
     public Node search(int value) {
