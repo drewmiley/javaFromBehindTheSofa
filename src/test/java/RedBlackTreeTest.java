@@ -52,9 +52,9 @@ public class RedBlackTreeTest {
     }
 
     @Test
-    public void testHasDeleteMethodReturnsBoolean() {
+    public void testHasDeleteMethodReturnsNode() {
         RedBlackTree redBlackTree = new RedBlackTree(1);
-        boolean deleted = redBlackTree.delete(1);
+        Node node = redBlackTree.delete(1);
     }
 
     @Test
@@ -1017,6 +1017,156 @@ public class RedBlackTreeTest {
         assertEquals(true, rootNode.isBlack());
         assertEquals(5, rootNode.getYoungerChild().getValue(), 0);
         assertEquals(20, rootNode.getElderChild().getValue(), 0);
+    }
+
+    @Test
+    public void testBSTDeleteReturnsRemovedNode() throws Exception {
+        RedBlackTree redBlackTree = new RedBlackTree(10);
+        redBlackTree.insert(5);
+
+        Node removedNode = redBlackTree.bstDelete(5);
+        assertEquals(5, removedNode.getValue(), 0);
+    }
+
+    @Test
+    public void testBSTDeleteRemovedNodeHasNullYoungerChild() throws Exception {
+        RedBlackTree redBlackTree = new RedBlackTree(10);
+        redBlackTree.insert(5);
+
+        Node removedNode = redBlackTree.bstDelete(5);
+        assertEquals(null, removedNode.getYoungerChild());
+    }
+
+    @Test
+    public void testBSTDeleteRemovedNodeHasNullElderChild() throws Exception {
+        RedBlackTree redBlackTree = new RedBlackTree(10);
+        redBlackTree.insert(5);
+
+        Node removedNode = redBlackTree.bstDelete(5);
+        assertEquals(null, removedNode.getElderChild());
+    }
+
+    @Test
+    public void testBSTDeleteReturnsNullIfIncorrectValue() throws Exception {
+        RedBlackTree redBlackTree = new RedBlackTree(10);
+        redBlackTree.insert(5);
+
+        Node removedNode = redBlackTree.bstDelete(20);
+        assertEquals(null, removedNode);
+    }
+
+    @Test
+    public void bstDeleteRemovesYoungerChild() throws Exception {
+        RedBlackTree redBlackTree = new RedBlackTree(10);
+        redBlackTree.insert(5);
+        redBlackTree.insert(20);
+
+        redBlackTree.insert(15);
+        Node removedNode = redBlackTree.bstDelete(15);
+        assertEquals(15, removedNode.getValue(), 0);
+
+        Node parentNode = redBlackTree.search(20);
+        assertEquals(null, parentNode.getYoungerChild());
+    }
+
+    @Test
+    public void bstDeleteRemovesElderChild() throws Exception {
+        RedBlackTree redBlackTree = new RedBlackTree(10);
+        redBlackTree.insert(5);
+        redBlackTree.insert(20);
+
+        redBlackTree.insert(8);
+        Node removedNode = redBlackTree.bstDelete(8);
+        assertEquals(8, removedNode.getValue(), 0);
+
+        Node parentNode = redBlackTree.search(5);
+        assertEquals(null, parentNode.getElderChild());
+    }
+
+    @Test
+    public void bstDeleteRemovesParentWithYoungerChild() throws Exception {
+        RedBlackTree redBlackTree = new RedBlackTree(10);
+        redBlackTree.insert(5);
+        redBlackTree.insert(20);
+
+        redBlackTree.insert(15);
+
+        Node removedNode = redBlackTree.bstDelete(20);
+        assertEquals(20, removedNode.getValue(), 0);
+        assertEquals(null, removedNode.getYoungerChild());
+
+        Node orphanedNode = redBlackTree.search(15);
+        assertEquals(15, orphanedNode.getValue(), 0);
+        assertEquals(null, orphanedNode.getElderChild());
+
+        Node rootNode = redBlackTree.search(10);
+        assertEquals(10, rootNode.getValue(), 0);
+        assertEquals(15, rootNode.getElderChild().getValue(), 0);
+    }
+
+    @Test
+    public void bstDeleteRemovesParentWithElderChild() throws Exception {
+        RedBlackTree redBlackTree = new RedBlackTree(10);
+        redBlackTree.insert(5);
+        redBlackTree.insert(20);
+
+        redBlackTree.insert(8);
+
+        Node removedNode = redBlackTree.bstDelete(5);
+        assertEquals(5, removedNode.getValue(), 0);
+        assertEquals(null, removedNode.getElderChild());
+
+        Node orphanedNode = redBlackTree.search(8);
+        assertEquals(8, orphanedNode.getValue(), 0);
+        assertEquals(null, orphanedNode.getYoungerChild());
+
+        Node rootNode = redBlackTree.search(10);
+        assertEquals(10, rootNode.getValue(), 0);
+        assertEquals(8, rootNode.getYoungerChild().getValue(), 0);
+    }
+
+    @Test
+    public void bstDeleteRemovesParentWithTwoChildrenElderYoungerToRoot() throws Exception {
+        RedBlackTree redBlackTree = new RedBlackTree(10);
+        redBlackTree.insert(5);
+        redBlackTree.insert(20);
+
+        redBlackTree.insert(15);
+        redBlackTree.insert(30);
+
+        Node removedNode = redBlackTree.bstDelete(20);
+        assertEquals(20, removedNode.getValue(), 0);
+        assertEquals(null, removedNode.getYoungerChild());
+        assertEquals(null, removedNode.getElderChild());
+
+        Node orphanedYoungerNode = redBlackTree.search(15);
+        assertEquals(15, orphanedYoungerNode.getValue(), 0);
+        assertEquals(30, orphanedYoungerNode.getElderChild().getValue(), 0);
+
+        Node orphanedElderNode = redBlackTree.search(30);
+        assertEquals(30, orphanedElderNode.getValue(), 0);
+    }
+
+    @Test
+    public void bstDeleteRemovesParentWithTwoChildrenElderCloserToRoot() throws Exception {
+        RedBlackTree redBlackTree = new RedBlackTree(10);
+        redBlackTree.insert(5);
+        redBlackTree.insert(20);
+
+        redBlackTree.insert(1);
+        redBlackTree.insert(8);
+
+        Node removedNode = redBlackTree.bstDelete(5);
+        assertEquals(5, removedNode.getValue(), 0);
+        assertEquals(null, removedNode.getYoungerChild());
+        assertEquals(null, removedNode.getElderChild());
+
+        Node orphanedElderNode = redBlackTree.search(8);
+        assertEquals(8, orphanedElderNode.getValue(), 0);
+        assertEquals(1, orphanedElderNode.getYoungerChild().getValue(), 0);
+
+        Node orphanedYoungerNode = redBlackTree.search(1);
+        assertEquals(1, orphanedYoungerNode.getValue(), 0);
     }
 
 }

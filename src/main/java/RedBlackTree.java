@@ -175,8 +175,12 @@ public class RedBlackTree {
         return node;
     }
 
-    public boolean delete(int value) {
+    public Node delete(int value) {
+        return  bstDelete(value);
+    }
 
-        return false;
+    public Node bstDelete(int value) {
+
+        return null;
     }
 }
