@@ -15,7 +15,7 @@ public class RedBlackTree {
 
         Node grandparentNode = findParentNode(parentNode);
 
-        if (grandparentNode != null) {
+        if (grandparentNode != null && !parentNode.isBlack()) {
             if (uncleNode == null || uncleNode.isBlack()) {
                 if (grandparentNode.getYoungerChild() == parentNode &&
                         parentNode.getYoungerChild() == node) {
@@ -67,29 +67,11 @@ public class RedBlackTree {
                 }
 
             } else {
-//            parentNode.setBlack(true);
-//            uncleNode.setBlack(true);
-//            Node grandparentNode = findParentNode(parentNode);
-//            if (grandparentNode == null) {
-//
-//            } else {
-//                grandparentNode.setBlack(false);
-//                parentNode = findParentNode(grandparentNode);
-//                if (parentNode == null) {
-//                    return;
-//                } else {
-//                    parentNode.setBlack(true);
-//                    uncleNode = findSiblingNode(parentNode);
-//                    if (uncleNode == null) {
-//
-//                    } else {
-//                        uncleNode.setBlack(true);
-//                    }
-//                    grandparentNode = findParentNode(parentNode);
-//                    //etc.
-//                }
-//
-//            }
+                parentNode.setBlack(true);
+                uncleNode.setBlack(true);
+                if (grandparentNode.getValue() != rootNode.getValue()) {
+                    grandparentNode.setBlack(false);
+                }
             }
         }
         return node;
