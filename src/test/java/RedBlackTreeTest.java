@@ -36,7 +36,8 @@ public class RedBlackTreeTest {
     @Test
     public void testHasDeleteMethodWithIntArgument() {
         RedBlackTree redBlackTree = new RedBlackTree(1);
-        redBlackTree.delete(1);
+        redBlackTree.insert(2);
+        redBlackTree.delete(2);
     }
 
     @Test
@@ -54,7 +55,8 @@ public class RedBlackTreeTest {
     @Test
     public void testHasDeleteMethodReturnsNode() {
         RedBlackTree redBlackTree = new RedBlackTree(1);
-        Node node = redBlackTree.delete(1);
+        redBlackTree.insert(2);
+        Node node = redBlackTree.delete(2);
     }
 
     @Test
@@ -1056,7 +1058,7 @@ public class RedBlackTreeTest {
     }
 
     @Test
-    public void bstDeleteRemovesYoungerChild() throws Exception {
+    public void testBSTDeleteRemovesYoungerChild() throws Exception {
         RedBlackTree redBlackTree = new RedBlackTree(10);
         redBlackTree.insert(5);
         redBlackTree.insert(20);
@@ -1070,7 +1072,7 @@ public class RedBlackTreeTest {
     }
 
     @Test
-    public void bstDeleteRemovesElderChild() throws Exception {
+    public void testBSTDeleteRemovesElderChild() throws Exception {
         RedBlackTree redBlackTree = new RedBlackTree(10);
         redBlackTree.insert(5);
         redBlackTree.insert(20);
@@ -1084,7 +1086,7 @@ public class RedBlackTreeTest {
     }
 
     @Test
-    public void bstDeleteRemovesParentWithYoungerChild() throws Exception {
+    public void testBSTDeleteRemovesParentWithYoungerChild() throws Exception {
         RedBlackTree redBlackTree = new RedBlackTree(10);
         redBlackTree.insert(5);
         redBlackTree.insert(20);
@@ -1105,7 +1107,7 @@ public class RedBlackTreeTest {
     }
 
     @Test
-    public void bstDeleteRemovesParentWithElderChild() throws Exception {
+    public void testBSTDeleteRemovesParentWithElderChild() throws Exception {
         RedBlackTree redBlackTree = new RedBlackTree(10);
         redBlackTree.insert(5);
         redBlackTree.insert(20);
@@ -1126,7 +1128,7 @@ public class RedBlackTreeTest {
     }
 
     @Test
-    public void bstDeleteRemovesParentWithTwoChildrenElderYoungerToRoot() throws Exception {
+    public void testBSTDeleteRemovesParentWithTwoChildrenElderYoungerToRoot() throws Exception {
         RedBlackTree redBlackTree = new RedBlackTree(10);
         redBlackTree.insert(5);
         redBlackTree.insert(20);
@@ -1148,7 +1150,7 @@ public class RedBlackTreeTest {
     }
 
     @Test
-    public void bstDeleteRemovesParentWithTwoChildrenElderCloserToRoot() throws Exception {
+    public void testBSTDeleteRemovesParentWithTwoChildrenElderCloserToRoot() throws Exception {
         RedBlackTree redBlackTree = new RedBlackTree(10);
         redBlackTree.insert(5);
         redBlackTree.insert(20);

@@ -176,11 +176,55 @@ public class RedBlackTree {
     }
 
     public Node delete(int value) {
-        return  bstDelete(value);
+        return bstDelete(value);
     }
 
     public Node bstDelete(int value) {
+        Node deletedNode = search(value);
+        if (deletedNode == null) {
+            return null;
+        }
 
-        return null;
+        Node parentNode = findParentNode(deletedNode);
+        boolean deletedNodeIsElderChild = false;
+        if (parentNode.getElderChild() != null && parentNode.getElderChild().getValue() == deletedNode.getValue()) {
+            deletedNodeIsElderChild = true;
+        }
+        Node youngerChild = deletedNode.getYoungerChild();
+        Node elderChild = deletedNode.getElderChild();
+
+        if (youngerChild != null && elderChild != null) {
+            if (Math.abs(youngerChild.getValue() - rootNode.getValue()) <
+                    Math.abs(elderChild.getValue() - rootNode.getValue())) {
+                youngerChild.setElderChild(elderChild);
+                parentNode.setElderChild(youngerChild);
+            } else {
+                elderChild.setYoungerChild(youngerChild);
+                parentNode.setYoungerChild(elderChild);
+            }
+            deletedNode.setYoungerChild(null);
+            deletedNode.setElderChild(null);
+        } else if (youngerChild == null && elderChild != null) {
+            if (deletedNodeIsElderChild) {
+                parentNode.setElderChild(youngerChild);
+            } else {
+                parentNode.setYoungerChild(elderChild);
+            }
+            deletedNode.setElderChild(null);
+        } else if (youngerChild != null && elderChild == null) {
+            if (deletedNodeIsElderChild) {
+                parentNode.setElderChild(youngerChild);
+            } else {
+                parentNode.setYoungerChild(elderChild);
+            }
+            deletedNode.setYoungerChild(null);
+        } else {
+            if (deletedNodeIsElderChild) {
+                parentNode.setElderChild(null);
+            } else {
+                parentNode.setYoungerChild(null);
+            }
+        }
+        return deletedNode;
     }
 }
