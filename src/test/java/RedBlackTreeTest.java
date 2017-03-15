@@ -551,4 +551,292 @@ public class RedBlackTreeTest {
         assertEquals(null, insertedNode);
     }
 
+    @Test
+    public void testInsertMethodAddsYoungerYoungerGrandchildYoungerParentFirst() throws Exception {
+        int rootValue = 10;
+        RedBlackTree redBlackTree = new RedBlackTree(rootValue);
+
+        int youngerParentValue = 5;
+        redBlackTree.insert(youngerParentValue);
+
+        int elderParentValue = 20;
+        redBlackTree.insert(elderParentValue);
+
+        Node insertedNode = redBlackTree.insert(1);
+        assertEquals(1, insertedNode.getValue(), 0);
+        assertEquals(false, insertedNode.isBlack());
+        assertEquals(null, insertedNode.getYoungerChild());
+        assertEquals(null, insertedNode.getElderChild());
+
+        Node youngerParent = redBlackTree.search(youngerParentValue);
+        assertEquals(5, youngerParent.getValue(), 0);
+        assertEquals(true, youngerParent.isBlack());
+        assertEquals(1, youngerParent.getYoungerChild().getValue(), 0);
+        assertEquals(null, youngerParent.getElderChild());
+
+        Node elderParent = redBlackTree.search(elderParentValue);
+        assertEquals(20, elderParent.getValue(), 0);
+        assertEquals(true, elderParent.isBlack());
+        assertEquals(null, elderParent.getYoungerChild());
+        assertEquals(null, elderParent.getElderChild());
+
+        Node rootNode = redBlackTree.search(rootValue);
+        assertEquals(10, rootNode.getValue(), 0);
+        assertEquals(true, rootNode.isBlack());
+        assertEquals(5, rootNode.getYoungerChild().getValue(), 0);
+        assertEquals(20, rootNode.getElderChild().getValue(), 0);
+    }
+
+    @Test
+    public void testInsertMethodAddsYoungerYoungerGrandchildElderParentFirst() throws Exception {
+        int rootValue = 10;
+        RedBlackTree redBlackTree = new RedBlackTree(rootValue);
+
+        int elderParentValue = 20;
+        redBlackTree.insert(elderParentValue);
+
+        int youngerParentValue = 5;
+        redBlackTree.insert(youngerParentValue);
+
+        Node insertedNode = redBlackTree.insert(1);
+        assertEquals(1, insertedNode.getValue(), 0);
+        assertEquals(false, insertedNode.isBlack());
+        assertEquals(null, insertedNode.getYoungerChild());
+        assertEquals(null, insertedNode.getElderChild());
+
+        Node elderParent = redBlackTree.search(elderParentValue);
+        assertEquals(20, elderParent.getValue(), 0);
+        assertEquals(true, elderParent.isBlack());
+        assertEquals(null, elderParent.getYoungerChild());
+        assertEquals(null, elderParent.getElderChild());
+
+        Node youngerParent = redBlackTree.search(youngerParentValue);
+        assertEquals(5, youngerParent.getValue(), 0);
+        assertEquals(true, youngerParent.isBlack());
+        assertEquals(1, youngerParent.getYoungerChild().getValue(), 0);
+        assertEquals(null, youngerParent.getElderChild());
+
+        Node rootNode = redBlackTree.search(rootValue);
+        assertEquals(10, rootNode.getValue(), 0);
+        assertEquals(true, rootNode.isBlack());
+        assertEquals(5, rootNode.getYoungerChild().getValue(), 0);
+        assertEquals(20, rootNode.getElderChild().getValue(), 0);
+    }
+
+    @Test
+    public void testInsertMethodAddsYoungerElderGrandchildYoungerParentFirst() throws Exception {
+        int rootValue = 10;
+        RedBlackTree redBlackTree = new RedBlackTree(rootValue);
+
+        int youngerParentValue = 5;
+        redBlackTree.insert(youngerParentValue);
+
+        int elderParentValue = 20;
+        redBlackTree.insert(elderParentValue);
+
+        Node insertedNode = redBlackTree.insert(8);
+        assertEquals(8, insertedNode.getValue(), 0);
+        assertEquals(false, insertedNode.isBlack());
+        assertEquals(null, insertedNode.getYoungerChild());
+        assertEquals(null, insertedNode.getElderChild());
+
+        Node youngerParent = redBlackTree.search(youngerParentValue);
+        assertEquals(5, youngerParent.getValue(), 0);
+        assertEquals(true, youngerParent.isBlack());
+        assertEquals(null, youngerParent.getYoungerChild());
+        assertEquals(8, youngerParent.getElderChild().getValue(), 0);
+
+        Node elderParent = redBlackTree.search(elderParentValue);
+        assertEquals(20, elderParent.getValue(), 0);
+        assertEquals(true, elderParent.isBlack());
+        assertEquals(null, elderParent.getYoungerChild());
+        assertEquals(null, elderParent.getElderChild());
+
+        Node rootNode = redBlackTree.search(rootValue);
+        assertEquals(10, rootNode.getValue(), 0);
+        assertEquals(true, rootNode.isBlack());
+        assertEquals(5, rootNode.getYoungerChild().getValue(), 0);
+        assertEquals(20, rootNode.getElderChild().getValue(), 0);
+    }
+
+    @Test
+    public void testInsertMethodAddsYoungerElderGrandchildElderParentFirst() throws Exception {
+        int rootValue = 10;
+        RedBlackTree redBlackTree = new RedBlackTree(rootValue);
+
+        int elderParentValue = 20;
+        redBlackTree.insert(elderParentValue);
+
+        int youngerParentValue = 5;
+        redBlackTree.insert(youngerParentValue);
+
+        Node insertedNode = redBlackTree.insert(8);
+        assertEquals(8, insertedNode.getValue(), 0);
+        assertEquals(false, insertedNode.isBlack());
+        assertEquals(null, insertedNode.getYoungerChild());
+        assertEquals(null, insertedNode.getElderChild());
+
+        Node elderParent = redBlackTree.search(elderParentValue);
+        assertEquals(20, elderParent.getValue(), 0);
+        assertEquals(true, elderParent.isBlack());
+        assertEquals(null, elderParent.getYoungerChild());
+        assertEquals(null, elderParent.getElderChild());
+
+        Node youngerParent = redBlackTree.search(youngerParentValue);
+        assertEquals(5, youngerParent.getValue(), 0);
+        assertEquals(true, youngerParent.isBlack());
+        assertEquals(null, youngerParent.getYoungerChild());
+        assertEquals(8, youngerParent.getElderChild().getValue(), 0);
+
+        Node rootNode = redBlackTree.search(rootValue);
+        assertEquals(10, rootNode.getValue(), 0);
+        assertEquals(true, rootNode.isBlack());
+        assertEquals(5, rootNode.getYoungerChild().getValue(), 0);
+        assertEquals(20, rootNode.getElderChild().getValue(), 0);
+    }
+
+    @Test
+    public void testInsertMethodAddsElderYoungerGrandchildYoungerParentFirst() throws Exception {
+        int rootValue = 10;
+        RedBlackTree redBlackTree = new RedBlackTree(rootValue);
+
+        int youngerParentValue = 5;
+        redBlackTree.insert(youngerParentValue);
+
+        int elderParentValue = 20;
+        redBlackTree.insert(elderParentValue);
+
+        Node insertedNode = redBlackTree.insert(15);
+        assertEquals(15, insertedNode.getValue(), 0);
+        assertEquals(false, insertedNode.isBlack());
+        assertEquals(null, insertedNode.getYoungerChild());
+        assertEquals(null, insertedNode.getElderChild());
+
+        Node youngerParent = redBlackTree.search(youngerParentValue);
+        assertEquals(5, youngerParent.getValue(), 0);
+        assertEquals(true, youngerParent.isBlack());
+        assertEquals(null, youngerParent.getYoungerChild());
+        assertEquals(null, youngerParent.getElderChild());
+
+        Node elderParent = redBlackTree.search(elderParentValue);
+        assertEquals(20, elderParent.getValue(), 0);
+        assertEquals(true, elderParent.isBlack());
+        assertEquals(15, elderParent.getYoungerChild().getValue(), 0);
+        assertEquals(null, elderParent.getElderChild());
+
+        Node rootNode = redBlackTree.search(rootValue);
+        assertEquals(10, rootNode.getValue(), 0);
+        assertEquals(true, rootNode.isBlack());
+        assertEquals(5, rootNode.getYoungerChild().getValue(), 0);
+        assertEquals(20, rootNode.getElderChild().getValue(), 0);
+    }
+
+    @Test
+    public void testInsertMethodAddsElderYoungerGrandchildElderParentFirst() throws Exception {
+        int rootValue = 10;
+        RedBlackTree redBlackTree = new RedBlackTree(rootValue);
+
+        int elderParentValue = 20;
+        redBlackTree.insert(elderParentValue);
+
+        int youngerParentValue = 5;
+        redBlackTree.insert(youngerParentValue);
+
+        Node insertedNode = redBlackTree.insert(15);
+        assertEquals(15, insertedNode.getValue(), 0);
+        assertEquals(false, insertedNode.isBlack());
+        assertEquals(null, insertedNode.getYoungerChild());
+        assertEquals(null, insertedNode.getElderChild());
+
+        Node elderParent = redBlackTree.search(elderParentValue);
+        assertEquals(20, elderParent.getValue(), 0);
+        assertEquals(true, elderParent.isBlack());
+        assertEquals(15, elderParent.getYoungerChild().getValue(), 0);
+        assertEquals(null, elderParent.getElderChild());
+
+        Node youngerParent = redBlackTree.search(youngerParentValue);
+        assertEquals(5, youngerParent.getValue(), 0);
+        assertEquals(true, youngerParent.isBlack());
+        assertEquals(null, youngerParent.getYoungerChild());
+        assertEquals(null, youngerParent.getElderChild());
+
+        Node rootNode = redBlackTree.search(rootValue);
+        assertEquals(10, rootNode.getValue(), 0);
+        assertEquals(true, rootNode.isBlack());
+        assertEquals(5, rootNode.getYoungerChild().getValue(), 0);
+        assertEquals(20, rootNode.getElderChild().getValue(), 0);
+    }
+
+    @Test
+    public void testInsertMethodAddsElderElderGrandchildYoungerParentFirst() throws Exception {
+        int rootValue = 10;
+        RedBlackTree redBlackTree = new RedBlackTree(rootValue);
+
+        int youngerParentValue = 5;
+        redBlackTree.insert(youngerParentValue);
+
+        int elderParentValue = 20;
+        redBlackTree.insert(elderParentValue);
+
+        Node insertedNode = redBlackTree.insert(30);
+        assertEquals(30, insertedNode.getValue(), 0);
+        assertEquals(false, insertedNode.isBlack());
+        assertEquals(null, insertedNode.getYoungerChild());
+        assertEquals(null, insertedNode.getElderChild());
+
+        Node youngerParent = redBlackTree.search(youngerParentValue);
+        assertEquals(5, youngerParent.getValue(), 0);
+        assertEquals(true, youngerParent.isBlack());
+        assertEquals(null, youngerParent.getYoungerChild());
+        assertEquals(null, youngerParent.getElderChild());
+
+        Node elderParent = redBlackTree.search(elderParentValue);
+        assertEquals(20, elderParent.getValue(), 0);
+        assertEquals(true, elderParent.isBlack());
+        assertEquals(null, elderParent.getYoungerChild());
+        assertEquals(30, elderParent.getElderChild().getValue(), 0);
+
+        Node rootNode = redBlackTree.search(rootValue);
+        assertEquals(10, rootNode.getValue(), 0);
+        assertEquals(true, rootNode.isBlack());
+        assertEquals(5, rootNode.getYoungerChild().getValue(), 0);
+        assertEquals(20, rootNode.getElderChild().getValue(), 0);
+    }
+
+    @Test
+    public void testInsertMethodAddsElderElderGrandchildElderParentFirst() throws Exception {
+        int rootValue = 10;
+        RedBlackTree redBlackTree = new RedBlackTree(rootValue);
+
+        int elderParentValue = 20;
+        redBlackTree.insert(elderParentValue);
+
+        int youngerParentValue = 5;
+        redBlackTree.insert(youngerParentValue);
+
+        Node insertedNode = redBlackTree.insert(30);
+        assertEquals(30, insertedNode.getValue(), 0);
+        assertEquals(false, insertedNode.isBlack());
+        assertEquals(null, insertedNode.getYoungerChild());
+        assertEquals(null, insertedNode.getElderChild());
+
+        Node elderParent = redBlackTree.search(elderParentValue);
+        assertEquals(20, elderParent.getValue(), 0);
+        assertEquals(true, elderParent.isBlack());
+        assertEquals(null, elderParent.getYoungerChild());
+        assertEquals(30, elderParent.getElderChild().getValue(), 0);
+
+        Node youngerParent = redBlackTree.search(youngerParentValue);
+        assertEquals(5, youngerParent.getValue(), 0);
+        assertEquals(true, youngerParent.isBlack());
+        assertEquals(null, youngerParent.getYoungerChild());
+        assertEquals(null, youngerParent.getElderChild());
+
+        Node rootNode = redBlackTree.search(rootValue);
+        assertEquals(10, rootNode.getValue(), 0);
+        assertEquals(true, rootNode.isBlack());
+        assertEquals(5, rootNode.getYoungerChild().getValue(), 0);
+        assertEquals(20, rootNode.getElderChild().getValue(), 0);
+    }
+
 }
